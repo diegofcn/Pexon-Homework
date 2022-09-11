@@ -198,6 +198,13 @@ ul {
 .mobile-main-menu ul li a:hover {
     color: #aaa;
 }
+
+.alert{
+    color: aliceblue;
+}
+.wrapper {
+    display: flex;
+}
 /* Media Queries */
 
 @media(max-width: 960px) {
