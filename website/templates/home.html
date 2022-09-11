@@ -14,7 +14,11 @@
 
 <ul class="cert-list">
     {% for certificate in user.certificates %}
-    <li class="listitem">{{ certificate.title }}</li>
+    <li class="listitem">{{ certificate.title }}
+        <button class="close" type="button" onclick="deleteCertificate({{ certificate.id }})">
+            <span>&times;</span>
+        </button>
+    </li>
     {% endfor %}
 </ul>
 {% endblock %}

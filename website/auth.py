@@ -16,13 +16,13 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Logged in successfully!', category='success')
+                flash('Logged in successfully!')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                flash('Incorrect password, try again.', category='error')
+                flash('Incorrect password, try again.')
         else:
-            flash('Email does not exist.', category='error')
+            flash('Email does not exist.')
     return render_template("login.html", user=current_user)
 
 @auth.route('/logout')
@@ -42,23 +42,23 @@ def sign_up():
 
         user = User.query.filter_by(email=email).first()
         if user:
-            flash('Email already exists.', category='error')
+            flash('Email already exists.')
         elif len(email) < 4:
-            flash('Email must be greater than 3 characters.', category='error')
+            flash('Email must be greater than 3 characters.',)
         elif len(first_name) < 2:
-            flash('First name must be greater than 1 character.', category='error')
+            flash('First name must be greater than 1 character.',)
         elif len(last_name) < 2:
-            flash('Last name must be greater than 1 character.', category='error')
+            flash('Last name must be greater than 1 character.')
         elif password1 != password2:
-            flash('Passwords do not match.', category='error')
+            flash('Passwords do not match.')
         elif len(password1) < 5:
-            flash('Password must be at least 5 characters.', category='error')
+            flash('Password must be at least 5 characters.')
         else:
             new_user = User(email=email, first_name=first_name, last_name=last_name, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             login_user(user, remember=True)
-            flash('Account successfully created!', category='success')
+            flash('Account successfully created!')
             return redirect(url_for('views.home'))
 
     return render_template("sign_up.html", user=current_user)

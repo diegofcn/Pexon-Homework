@@ -9,3 +9,12 @@ function navToggle() {
     overlay.classList.toggle('overlay-show');
     menu.classList.toggle('show-menu');
 }
+
+function deleteCertificate(certificateId) {
+    fetch('/delete-certificate', {
+        method: 'POST',
+        body: JSON.stringify({ certificateId: certificateId})
+    }).then((_res) => {
+        window.location.href = "/";
+    });
+}
