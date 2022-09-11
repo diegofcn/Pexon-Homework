@@ -2,5 +2,19 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>TEST homepage</h1>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/home.css')}}">
+<h1>Certificates</h1>
+<br />
+<form method="POST">
+    <textarea name="certificate" id="certificate" rows="1" cols="50"class="form-text"></textarea>
+    <div class="button">
+        <input type="submit" value="Add Certificate">
+    </div>
+</form>
+
+<ul class="cert-list">
+    {% for certificate in user.certificates %}
+    <li class="listitem">{{ certificate.title }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
