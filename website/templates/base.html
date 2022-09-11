@@ -13,10 +13,13 @@
     <div id="overlay"></div>
     <div id="mobile-menu" class="mobile-main-menu">
         <ul>
+            {% if user.is_authenticated %}
             <li><a href="/">Home</a></li>
             <li><a href="/logout">Logout</a></li>
+            {% else %}
             <li><a href="/login">Login</a></li>
             <li><a href="/sign-up">Sign Up</a></li>
+            {% endif %}
         </ul>
     </div>
     <!--Navbar-->
@@ -28,10 +31,13 @@
         </div>
         <nav class="desktop-main-menu">
             <ul>
+                {% if user.is_authenticated %}
                 <li><a href="/">Home</a></li>
                 <li><a href="/logout">Logout</a></li>
+                {% else %}
                 <li><a href="/login">Login</a></li>
                 <li><a href="/sign-up">Sign Up</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
