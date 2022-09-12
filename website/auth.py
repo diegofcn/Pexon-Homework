@@ -13,6 +13,7 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
+        # Filter all the user with this specific email
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
@@ -53,9 +54,10 @@ def sign_up():
         elif len(password1) < 5:
             flash('Password must be at least 5 characters.')
         else:
+            # create a new user
             new_user = User(email=email, first_name=first_name, last_name=last_name, password=generate_password_hash(password1, method='sha256'))
-            db.session.add(new_user)
-            db.session.commit()
+            db.session.add(new_user) # add the new user to the database
+            db.session.commit() # update the database
             login_user(user, remember=True)
             flash('Account successfully created!')
             return redirect(url_for('views.home'))
