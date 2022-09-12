@@ -12,8 +12,8 @@ flask (backend framework), flask_login, flask_sqlalchemy
  
 ### 2. Project Structure
 
-* [website/](.\website)
-  * [static/](.\website\static)
+* [website/](website)
+  * [static/](\website\static)
     * [assets/](.\website\static\assets)
       * [pexon-consulting-de.png](.\website\static\assets\pexon-consulting-de.png)
     * [styles/](.\website\static\styles)
